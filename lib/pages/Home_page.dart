@@ -1,14 +1,28 @@
 import 'package:flutter/material.dart';
 import 'cadastro_page.dart';
+import 'login_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
+
+  void _sair(BuildContext context) {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (_) => const LoginPage()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.logout),
+            onPressed: () => _sair(context),
+          ),
+        ],
         backgroundColor: Colors.grey,
         foregroundColor: Colors.white,
       ),
@@ -30,7 +44,7 @@ class HomePage extends StatelessWidget {
               SizedBox(height: 80),
               const Text(
                 'Bem-vindo!',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 32),
               ElevatedButton.icon(
